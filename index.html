@@ -413,14 +413,28 @@ const outputs = [
 ];
 
     function generateBoxes() {
-      const input = inputTopics[Math.floor(Math.random() * inputTopics.length)];
-      const sensor = sensors[Math.floor(Math.random() * sensors.length)];
-      const output = outputs[Math.floor(Math.random() * outputs.length)];
+  // Optional: Clear the boxes while waiting
+  document.getElementById("box1").textContent = "...";
+  document.getElementById("box2").textContent = "...";
+  document.getElementById("box3").textContent = "...";
+  document.getElementById("description").textContent = "Generating...";
 
-      document.getElementById("box1").textContent = input;
-      document.getElementById("box2").textContent = sensor;
-      document.getElementById("box3").textContent = output;
-    }
+  // Create a random delay between 1000ms and 2000ms
+  const delay = Math.random() * 1000 + 1000;
+
+  setTimeout(() => {
+    const input = inputTopics[Math.floor(Math.random() * inputTopics.length)];
+    const sensor = sensors[Math.floor(Math.random() * sensors.length)];
+    const output = outputs[Math.floor(Math.random() * outputs.length)];
+    const randDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
+
+    document.getElementById("box1").textContent = input;
+    document.getElementById("box2").textContent = sensor;
+    document.getElementById("box3").textContent = output;
+    document.getElementById("description").textContent = randDescription;
+  }, delay);
+}
+
 
     const descriptions = [
       "The work traces an ambiguous boundary between flesh and function, asking what it means to sense through a circuit. Technology becomes less a tool and more a prosthetic of thought. Through subtle modulation, embodiment is redefined in code.",
